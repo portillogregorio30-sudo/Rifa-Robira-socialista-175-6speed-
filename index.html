@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rifa Robira 175 6 Speed</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ffcc00, #ff6a00);
+      padding: 25px 15px;
+      color: #111;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .moto {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 18px;
+      margin: 10px auto 20px;
+      display: block;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
+    }
+
+    .premio {
+      background: #1c1c1c;
+      border: 2px solid #ffcc00;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .premio h2 {
+      color: #ffcc00;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .precio {
+      font-size: 32px;
+      color: #00ff66;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .boton {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 16px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 19px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .boton:hover {
+      transform: scale(1.03);
+    }
+
+    .info {
+      background: #1c1c1c;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .info h2 {
+      color: #ffcc00;
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      font-size: 17px;
+      margin: 9px 0;
+    }
+
+    .numeros {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .numero {
+      background: #252525;
+      border: 1px solid #555;
+      padding: 10px 4px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .numero:hover {
+      background: #ffcc00;
+      color: #111;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 25px;
+      background: #080808;
+      color: #aaa;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      .precio {
+        font-size: 27px;
+      }
+
+      .numeros {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🏍️ RIFA ROBIRA 175 6 SPEED</h1>
+    <p>¡Participa y puedes llevarte esta increíble moto!</p>
+  </header>
+
+  <div class="contenedor">
+
+    <!-- FOTO DE LA MOTO -->
+    <img
+      class="moto"
+      src="https://via.placeholder.com/700x450?text=ROBIRA+175+6+SPEED"
+      alt="Robira 175 6 Speed"
+    >
+
+    <section class="premio">
+      <h2>🏆 PREMIO</h2>
+      <p style="font-size:22px;">Robira 175 6 Speed</p>
+
+      <div class="precio">
+        S/ 20 por número
+      </div>
+
+      <p>🎟️ Solo 500 números</p>
+
+      <a
+        class="boton"
+        href="https://wa.me/51926443724?text=Hola,%20quiero%20participar%20en%20la%20rifa%20de%20la%20Robira%20175%206%20Speed"
+        target="_blank">
+        📲 COMPRAR MI NÚMERO
+      </a>
+    </section>
+
+    <section class="info">
+      <h2>📋 ¿CÓMO PARTICIPAR?</h2>
+
+      <p>1️⃣ Elige tu número.</p>
+      <p>2️⃣ Realiza el pago de S/20.</p>
+      <p>3️⃣ Envía tu comprobante por WhatsApp.</p>
+      <p>4️⃣ Recibirás la confirmación de tu número.</p>
+    </section>
+
+    <section class="info">
+      <h2>🎟️ NÚMEROS DE LA RIFA</h2>
+
+      <p>Elige tu número entre el 001 y el 500.</p>
+
+      <div class="numeros" id="numeros"></div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>🏍️ Rifa Robira 175 6 Speed</p>
+    <p>📲 WhatsApp: 926 443 724</p>
+  </footer>
+
+  <script>
+    const contenedor = document.getElementById("numeros");
+
+    for (let i = 1; i <= 500; i++) {
+
+      const numero = document.createElement("div");
+
+      numero.className = "numero";
+
+      numero.textContent = String(i).padStart(3, "0");
+
+      numero.onclick = function () {
+
+        const elegido = numero.textContent;
+
+        const mensaje =
+          "Hola, quiero comprar el número " +
+          elegido +
+          " de la rifa de la Robira 175 6 Speed.";
+
+        window.open(
+          "https://wa.me/51926443724?text=" +
+          encodeURIComponent(mensaje),
+          "_blank"
+        );
+      };
+
+      contenedor.appendChild(numero);
+    }
+  </script>
+
+</body>
+</html>
